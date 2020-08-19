@@ -1,0 +1,30 @@
+#centrar {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-usertitle {
+  color: white;
+}
+
+#navbarSupportedContent {
+  margin-left: 370px;
+}
+
+/* STYLES PARA EL AVATAR DEL USUARIO */
+#container {
+  width: 30px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, white 10%, #6b0eda 100%);
+  justify-content: center;
+}
+
+#name {
+  width: 31px;
+  text-align: center;
+  color: #6b0eda;
+  font-size: 15px;
+  line-height: 30px;
+}

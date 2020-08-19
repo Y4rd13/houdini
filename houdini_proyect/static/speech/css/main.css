@@ -1,0 +1,15 @@
+#result {
+  height: 50px;
+  width: 800px;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.btn {
+  position: absolute;
+  top: 50%;
+}
+
+#button {
+  text-align: center;
+}

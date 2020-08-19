@@ -1,0 +1,65 @@
+#centrar {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-usertitle {
+  color: white;
+}
+
+#navbarSupportedContent {
+  margin-left: 370px;
+}
+
+#result {
+  height: 50px;
+  width: 800px;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.btnJS {
+  float: left;
+  top: 50%;
+}
+
+#button {
+  text-align: center;
+}
+
+.btnJStart {
+  float: right;
+  top: 50%;
+}
+
+#container {
+  width: 30px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, white 10%, #6b0eda 100%);
+  justify-content: center;
+}
+
+#name {
+  width: 31px;
+  text-align: center;
+  color: #6b0eda;
+  font-size: 15px;
+  line-height: 30px;
+}
+#wrongmessages {
+  background-color: #e74a3b;
+  color: #fff;
+  padding: 10px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+#goodmessages {
+  background-color: #1dbb18;
+  color: #fff;
+  padding: 10px;
+  margin-top: 10px;
+  text-align: center;
+}

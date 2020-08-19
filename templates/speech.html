@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Title -->
+    <title>Speech</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!-- Houdini Custom CSS -->
+    <link rel="stylesheet" href="{% static 'speech/css/main.css' %}">
+
+    <script src="{% static 'speech/js/speech.js' %}" type="application/javascript"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Fila 1 -->
+        <div class="row">
+            <div class="col-sm">
+                <!-- Columna 1 Fila 1 -->
+            </div>
+            <div class="col-sm p-3" id="column">
+                <!-- Columna 2 Fila 1 -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title">Note</h4>
+                        <div id="result"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <!-- Columna 3 Fila 1 -->
+            </div>
+        </div>
+        <!-- Fin Fila 1-->
+
+        <!-- Fila 2 -->
+        <div class="row">
+            <div class="col-sm" id="button">
+                <!-- Columna 1 Fila 2-->
+                <button class="btn btn-primary btn-lg" onclick="stop()">Stop</button>
+            </div>
+            <div class="col-sm" id="button">
+                <!-- Columna 2 Fila 2-->
+                <button class="btn btn-primary btn-lg" onclick="start()">Listen</button>
+            </div>
+        </div>
+        <!-- Fin Fila 2-->
+    </div>
+</body>
+
+</html>

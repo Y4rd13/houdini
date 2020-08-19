@@ -1,0 +1,31 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="userId">
+        <button type="submit">Enviar</button>
+        <a href="https://zoom.us/oauth/authorize?response_type=code&client_id=QL9cctWbTqq4FjqnVi52ig&redirect_uri=http://localhost:8000/testzoom/"
+            target="_blank" rel="noopener noreferrer"><img
+                src="https://marketplacecontent.zoom.us/zoom_marketplace/img/add_to_zoom.png" height="32"
+                alt="Add to ZOOM" /></a>
+    </form>
+    <div id="resultado">Resultado {{response}}</div>
+    <div id="respuesta">Respuesta {{respuesta}}</div>
+
+    <script>
+        console.log('{{response}}');
+        console.log('{{respuesta}}');
+    </script>
+</body>
+
+</html>

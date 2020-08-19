@@ -1,0 +1,260 @@
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+
+  <!--- Meta --->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Favicon icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="{%static 'template/assets/images/logoTitulo.png' %}">
+
+  <!-- Title -->
+  <title>Houdini Projects</title>
+
+  <!-- Template Custom CSS -->
+  <link href="{% static 'template/assets/libs/chartist/dist/chartist.min.css' %}" rel="stylesheet">
+  <link href="{% static 'template/dist/css/style.min.css' %}" rel="stylesheet">
+
+
+  <!-- TEMPLATE SIGNUP -->
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{% static 'signup/vendor/bootstrap/css/bootstrap.min.css' %}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{% static 'signup/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css"
+    href="{% static 'signup/fonts/iconic/css/material-design-iconic-font.min.css' %}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{% static 'signup/vendor/animate/animate.css' %}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{% static 'signup/vendor/css-hamburgers/hamburgers.min.css' %}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{% static 'signup/vendor/animsition/css/animsition.min.css' %}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{% static 'signup/vendor/select2/select2.min.css' %}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{% static 'signup/vendor/daterangepicker/daterangepicker.css' %}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{% static 'signup/css/util.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'signup/css/main.css' %}">
+
+  <!-- BAR -->
+  <link href="{% static 'template/dist/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'template/dist/css/sb-admin-2.css'  %}" rel="stylesheet">
+
+  <!-- SOCIAL ICONS ACCOUNTS -->
+  <link rel="stylesheet" type="text/css" href="{% static 'signup/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+</head>
+
+
+<body id="page-top">
+  <!-- Page Wrapper -->
+
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+          <img src="{% static 'dashboard/assets/images/logoTitulo2.png' %}" alt="user" width="24" height="27" />
+          <div class="sidebar-brand-text mx-3">Login</div>
+        </a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Sign in
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'index' %}">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Login</span>
+        </a>
+      </li>
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Sign up
+      </div>
+
+      <!-- Divider -->
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'account_signup' %}">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Register</span>
+        </a>
+      </li>
+
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+    </ul>
+    <!-- End of Sidebar -->
+    <!-- Sidebar Toggle (Topbar) -->
+    <button id="sidebarToggleTop" class="btn btn-link d-md-none">
+      <i class="fa fa-bars"></i>
+    </button>
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="limiter">
+                <div class="container-login100">
+                  <div class="wrap-login100">
+                    <form method="POST" action="">
+                      {% csrf_token %}
+
+                      <span class="login100-form-logo">
+                        <img src="{% static 'signup/images/icono1.png' %}" alt="user" width="100" height="90" />
+                      </span>
+
+                      <span class="login100-form-title p-b-34 p-t-27">
+                        Sign up
+                      </span>
+
+                      <!-- Form Errors Messages-->
+
+                      {% for fail in form.errors %}
+
+                      {% if fail == 'username' %}
+                      <span class="error-form-title p-b-34 p-t-27" id="wrongmessages">
+                        Username: {{form.errors.username}}
+                      </span>
+                      {% endif %}
+
+                      {% if fail == 'email' %}
+                      <span class="error-form-title p-b-34 p-t-27" id="wrongmessages">
+                        Email: {{form.errors.email}}
+                      </span>
+                      {% endif %}
+
+
+                      {% if fail == 'password1' %}
+                      <span class="error-form-title p-b-34 p-t-27" id="wrongmessages">
+                        Password: {{form.errors.password1}}
+                      </span>
+                      {% endif %}
+
+
+                      {% if fail == 'password2' %}
+                      <span class="error-form-title p-b-34 p-t-27" id="wrongmessages">
+                        Repeat Password: {{form.errors.password1}}
+                      </span>
+                      {% endif %}
+
+
+                      {% endfor %}
+                      <!-- End Form Errors Message-->
+
+                      <!-- Input fields for signup -->
+                      <div class="wrap-input100 validate-input" data-validate="Enter username">
+                        <input class="input100" type="text" name="username" placeholder="Username">
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                      </div>
+                      <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input class="input100" type="email" name="email" placeholder="Email">
+                        <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                      </div>
+                      <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input class="input100" type="password" name="password1" placeholder="Password">
+                        <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                      </div>
+                      <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input class="input100" type="password" name="password2" placeholder="Repeat Password">
+                        <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                      </div>
+                      <div class="login100-form-btn p-t-10">
+                        <input class="btn login_btn" type="submit" value="Create account">
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.container-fluid -->
+    </div>
+    <!-- End of Content Wrapper -->
+  </div>
+  <!-- End of Main Content -->
+
+
+  <!-- Template Custom JS -->
+  <!--===============================================================================================-->
+  <script src="{% static 'signup/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+  <!--===============================================================================================-->
+  <script src="{% static 'signup/vendor/animsition/js/animsition.min.js' %}"></script>
+  <!--===============================================================================================-->
+  <script src="{% static 'signup/vendor/bootstrap/js/popper.js' %}"></script>
+  <script src="{% static 'signup/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+  <!--===============================================================================================-->
+  <script src="{% static 'signup/vendor/select2/select2.min.js' %}"></script>
+  <!--===============================================================================================-->
+  <script src="{% static 'signup/vendor/daterangepicker/moment.min.js' %}"></script>
+  <script src="{% static 'signup/vendor/daterangepicker/daterangepicker.js' %}"></script>
+  <!--===============================================================================================-->
+  <script src="{% static 'signup/vendor/countdowntime/countdowntime.js' %}"></script>
+  <!--===============================================================================================-->
+  <script src="{% static 'signup/js/main.js' %}"></script>
+
+  <script src="{% static 'template/assets/libs/jquery/dist/jquery.min.js' %}"></script>
+  <!-- Bootstrap tether Core JavaScript -->
+  <script src="{% static 'template/assets/libs/popper.js/dist/umd/popper.min.js' %}"></script>
+  <script src="{% static 'template/assets/libs/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+  <!-- slimscrollbar scrollbar JavaScript -->
+  <script src="{% static 'template/assets/extra-libs/sparkline/sparkline.js' %}"></script>
+  <!--Wave Effects -->
+  <script src="{% static 'template/dist/js/waves.js' %}"></script>
+  <!--Menu sidebar -->
+  <script src="{% static 'template/dist/js/sidebarmenu.js' %}"></script>
+  <!--Custom JavaScript -->
+  <script src="{% static 'template/dist/js/custom.min.js' %}"></script>
+  <!--Menu sidebar -->
+  <script src="{% static 'template/dist/js/jquery.min.js' %}"></script>
+  <script src="{% static 'template/dist/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'template/dist/js/sb-admin-2.min.js' %}"></script>
+  <!--Custom JavaScript -->
+  <script src="{% static 'template/dist/js/custom.min.js' %}"></script>
+
+</body>
+
+</html>

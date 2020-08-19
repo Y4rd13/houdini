@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+
+  <!--- Meta --->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- Tell the browser to be responsive to screen width -->
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Favicon icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="{%static 'dashboard/assets/images/logoTitulo.png' %}">
+  <title>Houdini Projects</title>
+
+  <!-- Houdini Custom CSS -->
+  <link rel="stylesheet" href="{% static 'dashboard/dist/css/houdini.css' %}">
+  <link rel="stylesheet" href="{% static 'my_conversation/css/main.css' %}">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'login/css/util.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'login/css/main.css' %}">
+
+  <link href="{% static 'dashboard/dist/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+</head>
+
+<body id="page-top">
+
+  <div id="wrapper">
+      <div id="content">
+        <div class="container-fluid">
+          <div class="col-12">
+            <div class="limiter">
+              <div class="container-login100">
+                <div class="wrap-login100">
+                  {% for message in messages %}
+                  {% if message.message == "Error, the Zoom account is already being used in another account." %}
+                  <span class="error-form-title p-b-34 p-t-27" id="wrongmessages">
+                    {{message}}
+                  </span>
+                  {% elif message.message == "Error, you already have an associated zoom account." %}
+                  <span class="error-form-title p-b-34 p-t-27" id="wrongmessages">
+                    {{message}}
+                  </span>
+                  {% else %}
+                  <span class="error-form-title p-b-34 p-t-27" id="goodmessages">
+                    {{message}}
+                  </span>
+                  {% endif %}
+                  {% endfor %}
+
+                  <div class="text-center mb-3 login100-form-btn p-t-10" style = "margin-top: 30px">
+                    <a class="nav-link " href="{% url 'dashboard' %}" >
+                      <i class="fas fa-home"></i>
+                      <span>Back to Houdini</span>
+                    </a>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </div>
+
+
+  <!--Custom JavaScript -->
+  <script src="{% static 'dashboard/dist/js/custom.min.js' %}"></script>
+  <script src="{% static 'dashboard/dist/js/pages/dashboards/dashboard1.js' %}"></script>
+</body>
+
+</html>

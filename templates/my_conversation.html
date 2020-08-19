@@ -1,0 +1,372 @@
+{% load static %}
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <!--- Meta --->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- Favicon icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="{%static 'template/assets/images/logoTitulo.png' %}">
+  <!-- Title -->
+  <title>Houdini Projects</title>
+  <!-- Template Custom CSS -->
+  <link href="{% static 'template/assets/libs/chartist/dist/chartist.min.css' %}" rel="stylesheet">
+  <link href="{% static 'template/dist/css/style.min.css' %}" rel="stylesheet">
+  <!-- Custom Houdini CSS -->
+  <link rel="stylesheet" href="{% static 'my_conversation/css/main.css' %}">
+  <!-- BAR -->
+  <link href="{% static 'template/dist/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'template/dist/css/sb-admin-2.css'  %}" rel="stylesheet">
+  <!-- Speech -->
+  <link rel="stylesheet" href="{% static 'my_conversation/css/bulma.css' %}">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <!-- Houdini Custom CSS -->
+
+  <script src="{% static 'my_conversation/js/speech.js' %}" type="application/javascript"></script>
+  <!-- Redirect Zoom Script-->
+  <script>
+    function window_open() {
+      window.open("{% url 'zoom' %}", "Zoom", "width=1230,height=701, top=150,left=350");
+    }
+  </script>
+
+  <style>
+    #result {
+      resize: none;
+    }
+  </style>
+</head>
+
+<body id="page-top">
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'dashboard' %}">
+          <img src="{% static 'dashboard/assets/images/logoTitulo2.png' %}" alt="user" width="24" height="27" />
+          <div class="sidebar-brand-text mx-3">HOUDINI</div>
+        </a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0 mb-1">
+
+      <!-- Nav Item - Dashboard -->
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'dashboard' %}">
+          <i class="fas fa-home"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Recording
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'my_conversation' %}">
+          <i class="fas fa-book-open"></i>
+          <span>My conversations</span>
+        </a>
+      </li>
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Aplications
+      </div>
+      <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item">
+
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="far fa-comment"></i>
+          <span>Zoom</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Zoom</h6>
+            <a class="collapse-item" href="#"> Add </a>
+            <a class="collapse-item" onclick=" window_open()" href="{% url 'my_conversation' %}"> Open Zoom</a>
+          </div>
+        </div>
+
+        <a class="nav-link collapsed" href="{% url 'my_conversation' %}" data-toggle="collapse"
+          data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-cloud"></i>
+          <span>Salesforce</span>
+        </a>
+
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Salesforce</h6>
+            <a class="collapse-item" href="#">Notes</a>
+          </div>
+        </div>
+
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+
+      <!-- Sidebar - Brand -->
+      <div id="centrar" class="profile-userpic">
+        <li class="nav-item">
+          <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#" data-toggle="collapse"
+            data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+            <div id="container">
+              <div id="name">
+              </div>
+            </div>
+            <span class="sidebar-brand-text mx-3" style="font-size: 0.7rem;font-weight: 400; text-transform: none;">
+              <div>
+                <span id="nombreAvatar">{{ user.username }}</span>
+              </div>
+              <span id="emailAvatar">{{ user.email }}</span>
+            </span>
+            <a class="nav-link collapsed" href="{% url 'my_conversation' %}" data-toggle="collapse"
+              data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+
+            </a>
+          </a>
+
+          <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">User:</h6>
+              <a class="collapse-item" href="{% url 'settings' %}">Settings</a>
+              <a class="collapse-item" href="{% url 'account_logout' %}">Log out</a>
+            </div>
+          </div>
+        </li>
+      </div>
+
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+    </ul>
+    <!-- End of Sidebar -->
+
+
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+      <!-- Main Content -->
+      <div id="content">
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+          <!-- Topbar Search -->
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Search Meeting"
+                aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                  <i class="fas fa-search fa-sm"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <!-- Input Search -->
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search Meeting"
+                      aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+            <img src="{% static 'template/assets/images/logoTitulo.png' %}" width="50" height="60" alt="homepage" />
+          </ul>
+        </nav>
+        <!-- Currently page -->
+        <div class="container-fluid">
+          <div class="page-breadcrumb">
+            <div class="row">
+              <div class="col-5 align-self-center">
+                <h4 class="page-title">My conversations</h4>
+              </div>
+              <div class="col-7 align-self-center">
+                <div class="d-flex align-items-center justify-content-end">
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item">
+                        <a href="/">Home</a>
+                      </li>
+                      <li class="breadcrumb-item active" aria-current="page">My conversations</li>
+                    </ol>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Content Row -->
+        <section class="section">
+          <div class="columns">
+            <div class="column is-2">
+              <aside class="menu">
+                <hr>
+                <p class="menu-label"><strong>My notes</strong></p>
+                <hr>
+                <ul class="menu-list">
+                  {% for doc in documents %}
+                  <li>
+                    <a href="{% url 'my_conversation' %}?docid={{ doc.id }}"><span
+                        id="contenido">{{ doc.title }}</span></a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </aside>
+            </div>
+            <div class="column is-10">
+
+
+              <form method="post" action="{% url 'my_conversation' %}">
+                {% csrf_token %}
+                <input type="hidden" name="docid" id="docid" value="{{ docid }}">
+                <!-- Buttons -->
+                <div class="field is-grouped">
+                  <div class="control">
+                    <button id="sendsave" class="btn btn-warning">Save</button>
+                  </div>
+                  {% if document %}
+                  <div class="control">
+                    <a href="{% url 'delete_document' document.id %}" class="btn btn-danger">Delete</a>
+                  </div>
+                  {% endif %}
+                  <a class="btn btn-primary" style="background-color: #28a745; border-color: transparent;" id="button"
+                    onclick="toggleStartStop()"><i id="icono" class="fas fa-microphone" style="color : white;"></i></a>
+                </div>
+                <!-- End Buttons -->
+                <div class="field">
+                  <label class="label">
+                    Title
+                  </label>
+                  <div class="control">
+                    <input id="title" type="text" class="input" name="title" placeholder="Title" {% if document %}
+                      value="{{ document.title }}" {% endif %}>
+                  </div>
+                </div>
+                <div class="field">
+                  <label class="label">Content</label>
+
+                  <div class="control">
+                    <textarea class="textarea" name="content" placeholder="Content"
+                      id="result">{% if document %}{{ document.content }}{% endif %}</textarea>
+                  </div>
+                  <div style="margin-top: 30px">
+                    {% for message in messages %}
+
+                    {% if message.message == "Error, note without content." %}
+                    <span class="error-form-title p-b-34 p-t-27" id="wrongmessages">
+                      {{message}}
+                    </span>
+
+                    {% else %}
+                    <span class="error-form-title p-b-34 p-t-27" id="goodmessages">
+                      {{message}}
+                    </span>
+
+                    {% endif %}
+
+                    {% endfor %}
+                  </div>
+                </div>
+                <!--here-->
+              </form>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>All Rights Reserved by Houdiniapp</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End footer -->
+    </div>
+    <!-- End of Content Wrapper -->
+  </div>
+  <!-- End of Wrapper -->
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+  <!-- Custom Houdini JS-->
+  <script src="{% static 'template/dist/js/initials.js' %}" type="application/javascript"></script>
+  <script src="{% static 'template/dist/js/avatar.js' %}" type="application/javascript"></script>
+  <script>
+    initial('{{ user.username }}');
+    avatar('{{ user.username }}', '{{ user.email }}');
+  </script>
+  <script>
+    let doc = document.getElementById("result");
+    let title = document.getElementById("title");
+    let id = document.getElementById("docid");
+    if ('{{message}}' != '') {
+      doc.innerHTML = '{{message}}';
+      title.value = 'Zoom Meeting';
+      document.getElementById("sendsave").click();
+    }
+  </script>
+  <!-- Template Custom JS -->
+  <script src="{% static 'template/dist/js/jquery.min.js' %}"></script>
+  <script src="{% static 'template/dist/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'template/dist/js/sb-admin-2.min.js' %}"></script>
+  <script src="{% static 'template/dist/js/custom.min.js' %}"></script>
+  <script src="{% static 'template/assets/libs/chartist/dist/chartist.min.js' %}"></script>
+  <script
+    src="{% static 'template/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js' %}"></script>
+  <script src="{% static 'template/dist/js/pages/dashboards/dashboard1.js' %}"></script>
+</body>
+
+</html>
